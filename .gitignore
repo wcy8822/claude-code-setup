@@ -1,0 +1,14 @@
+# 敏感配置文件（防止误提交）
+*token*.json
+*secret*.json
+settings.local.json
+.env
+.env.*
+
+# 本地备份
+.backup/
+*.bak
+
+# 操作系统
+.DS_Store
+Thumbs.db
