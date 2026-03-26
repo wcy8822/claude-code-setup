@@ -59,26 +59,18 @@ fi
 echo ""
 echo "⚙️  步骤 5/6: 配置 Claude..."
 if [ -f "settings.json" ]; then
-    # 保留现有的 auth_token（如果存在）
-    if [ -f "$CLAUDE_DIR/settings.json" ]; then
-        EXISTING_TOKEN=$(python3 -c "import json; print(json.load(open('$CLAUDE_DIR/settings.json')).get('env', {}).get('ANTHROPIC_AUTH_TOKEN', ''))" 2>/dev/null || echo "")
-    fi
-
     cp settings.json "$CLAUDE_DIR/settings.json"
-
-    # 如果有现有 token，保留它
-    if [ -n "$EXISTING_TOKEN" ]; then
-        echo -e "${GREEN}✓ 保留现有 API Token${NC}"
-        echo "你的 token 仍然有效，无需重新配置"
-    else
-        echo -e "${YELLOW}⚠️  需要配置 API Token${NC}"
-        echo ""
-        echo "请在 $CLAUDE_DIR/settings.json 中设置你的 ANTHROPIC_AUTH_TOKEN"
-        echo ""
-        echo "或者运行: claude config set auth_token YOUR_TOKEN_HERE"
-    fi
-
     echo -e "${GREEN}✓ 配置文件安装完成${NC}"
+
+    # 提醒配置 API Token
+    echo ""
+    echo -e "${YELLOW}⚠️  重要：需要配置 API Token${NC}"
+    echo ""
+    echo "仓库中的 settings.json 不包含 API token（安全考虑），请手动配置："
+    echo ""
+    echo "  方式1: claude config set auth_token YOUR_TOKEN_HERE"
+    echo "  方式2: 编辑 $CLAUDE_DIR/settings.json"
+    echo ""
 else
     echo -e "${YELLOW}未找到 settings.json，跳过...${NC}"
 fi

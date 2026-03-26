@@ -86,8 +86,8 @@
 
 ```bash
 # 克隆本仓库
-git clone https://github.com/wcy8822/claude-setup.git
-cd claude-setup
+git clone https://github.com/wcy8822/claude-code-setup.git
+cd claude-code-setup
 
 # 运行安装脚本
 chmod +x install.sh
@@ -117,18 +117,45 @@ claude config set auth_token YOUR_TOKEN_HERE
 
 ## 配置说明
 
-### API Token 配置
+### ⚠️ API Token 配置
 
-在 `~/.claude/settings.json` 中配置你的 Anthropic Token：
+**重要：仓库中的 `settings.json` 不包含 API token，需要自行配置！**
+
+运行安装脚本后，需要配置你的 API token：
+
+```bash
+# 方式1: 使用命令行配置
+claude config set auth_token YOUR_TOKEN_HERE
+
+# 方式2: 直接编辑配置文件
+nano ~/.claude/settings.json
+```
+
+在 `~/.claude/settings.json` 中添加：
 
 ```json
 {
+  "model": "sonnet[1m]",
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "YOUR_TOKEN_HERE",
-    "ANTHROPIC_BASE_URL": "https://api.anthropic.com"
-  }
+    "ANTHROPIC_AUTH_TOKEN": "你的_API_Token",
+    "ANTHROPIC_BASE_URL": "你的_API_Endpoint"
+  },
+  ...
 }
 ```
+
+#### 获取 API Token
+
+| 服务商 | 获取地址 |
+|--------|---------|
+| Anthropic 官方 | https://console.anthropic.com/settings/keys |
+| 智谱 GLM | 咨询智谱服务商 |
+
+#### 安全提醒
+- ❌ 不要将 API token 提交到 Git
+- ❌ 不要在公开仓库中分享
+- ✅ 使用环境变量存储敏感信息
+- ✅ 定期轮换 token
 
 ### 插件安装
 
