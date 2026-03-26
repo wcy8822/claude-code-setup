@@ -1,14 +1,6 @@
 {
-  "env": {
-    "ANTHROPIC_AUTH_TOKEN": "40fdb87ab1974299920f63f3988617c5.lMJG1ibwOzQSKeES",
-    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
-    "API_TIMEOUT_MS": "3000000",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
-  },
   "model": "sonnet[1m]",
   "enabledPlugins": {
-    "glm-plan-usage@zai-coding-plugins": true,
-    "glm-plan-bug@zai-coding-plugins": true,
     "everything-claude-code@everything-claude-code": true,
     "claude-hud@claude-hud": true
   },
